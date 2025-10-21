@@ -1,36 +1,111 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🧩 Tolt Flow Conditions Task
 
-## Getting Started
+Welcome to the **Tolt Engineering Challenge**.
 
-First, run the development server:
+This task is designed to evaluate your ability to work with **React (Next.js)**, **TypeScript**, and **UI state management** using **shadcn/ui**.  
+You’ll be working on a simplified version of the **Flow Conditions** modal used in Tolt’s production app.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## 🎯 Goal
+
+You are given a working version of the **“Add Additional Conditions”** modal.  
+Your task is to **extend the existing logic** so that conditions can be grouped and nested using **AND / OR** operators.
+
+In production, this feature determines whether a commission should be generated based on certain criteria (like partner, product, billing type, etc.).
+
+---
+
+## 📦 What’s already included
+
+The project includes:
+
+- ✅ **Functional base modal** built with `shadcn/ui`
+- ✅ Flat conditions logic (all AND or all OR)
+- ✅ A working “Test Flow” button that evaluates mock data against the entered conditions
+- ✅ UI components for adding, removing, and clearing conditions
+- ✅ Predefined condition options:
+  - `partner_id`
+  - `product_id`
+  - `interval`
+  - `billing_type`
+
+Your starting UI should look like this:
+
+![Modal Screenshot](./preview.png)
+
+---
+
+## 🧠 Your task
+
+You need to **implement nested condition groups**, allowing structures like:
+
+```text
+(Partner ID equals "p_123")
+AND
+(
+  (Billing Type equals "recurring")
+  OR
+  (Interval equals "monthly")
+)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📝 Instructions
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Fork this repository
+2. Implement the nested condition groups
+3. Run the project and test the functionality
+4. Submit a pull request
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📝 Notes
 
-## Learn More
+The flow object looks like this:
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```json
+ {
+            "id": "flw_UvLodqUdCF8Y1KuSZuiW9mCY",
+            "name": "$5 Flow",
+            "description": "Earn $5 for every referral.",
+            "event": "transaction_created",
+            "action_type": "generate_commission",
+            "action": {
+                "type": "fixed",
+                "value": 5
+            },
+            "conditions": [
+                {
+                    "id": "98209e0a-8b2e-4898-bd97-e075cbff2429",
+                    "type": "partner_country",
+                    "value": [
+                        "AF",
+                        "AX",
+                        "AL",
+                        "DZ",
+                        "AS",
+                        "AD",
+                        "AO",
+                    ],
+                    "operator": "is in",
+                    "logicalOperator": "AND"
+                }
+            ],
+            "organization_id": "org_9MTRHhGnf3Emjf3My7d87ucM",
+            "program_id": "prg_udJZjmJJrnnJrW5auom7NBJv",
+            "group_id": "grp_fXhgGMXzJedeA9BmRLkgp9tq",
+            "created_at": "2025-06-23T03:21:15.814Z",
+            "updated_at": "2025-06-23T05:40:11.636Z",
+            "active": true,
+            "partner_overrides": [],
+            "options": {
+                "auto_approval": {
+                    "type": "manual",
+                    "delay_days": 0
+                },
+                "prorate_yearly_subscription": {
+                    "period": "none",
+                    "enabled": false
+                }
+            },
+            "group_name": "Default"
+        },
+```

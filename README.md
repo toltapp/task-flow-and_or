@@ -129,8 +129,8 @@ AND
 1. Push changes to your repository or submit a pull request.
 2. Send the link to the repository or PR if possible send the link to the live demo.
 3. Record a video explaining your solution and how it works and answer the following questions:
-   1. This data is coming from the database, does the solution require changes to the database schema?
-      A. If so, how would you change the schema?
-      B. What will happen to the existing flows, will they still work with your code?
-      C. Will we need to update all existing flows, or do you have a different approach for it?
-   2. Would you do it differently if you had to do it again - design wise, code wise, etc...?
+   - This data is coming from the database, does the solution require changes to the database schema?
+     - A. If so, how would you change the schema?
+     - B. What will happen to the existing flows, will they still work with your code?
+     - C. Will we need to update all existing flows, or do you have a different approach for it?
+   - Would you do it differently if you had to do it again - design wise, code wise, etc...?

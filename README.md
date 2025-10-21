@@ -129,5 +129,5 @@ AND
    - Would you do it differently if you had to do it again - design wise, code wise, etc...?
   
 
-## Desig
+## Design
 - If the design is not great and you can do better, then feel free to do it :) 

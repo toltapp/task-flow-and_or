@@ -32,7 +32,7 @@ The project includes:
 
 Your starting UI should look like this:
 
-![Modal Screenshot](./preview.png)
+![Modal Screenshot](./Screenshot1.png)
 
 ---
 
@@ -63,49 +63,63 @@ The flow object looks like this:
 
 ```json
  {
-            "id": "flw_UvLodqUdCF8Y1KuSZuiW9mCY",
-            "name": "$5 Flow",
-            "description": "Earn $5 for every referral.",
-            "event": "transaction_created",
-            "action_type": "generate_commission",
-            "action": {
-                "type": "fixed",
-                "value": 5
-            },
-            "conditions": [
-                {
-                    "id": "98209e0a-8b2e-4898-bd97-e075cbff2429",
-                    "type": "partner_country",
-                    "value": [
-                        "AF",
-                        "AX",
-                        "AL",
-                        "DZ",
-                        "AS",
-                        "AD",
-                        "AO",
-                    ],
-                    "operator": "is in",
-                    "logicalOperator": "AND"
-                }
-            ],
-            "organization_id": "org_9MTRHhGnf3Emjf3My7d87ucM",
-            "program_id": "prg_udJZjmJJrnnJrW5auom7NBJv",
-            "group_id": "grp_fXhgGMXzJedeA9BmRLkgp9tq",
-            "created_at": "2025-06-23T03:21:15.814Z",
-            "updated_at": "2025-06-23T05:40:11.636Z",
-            "active": true,
-            "partner_overrides": [],
-            "options": {
-                "auto_approval": {
-                    "type": "manual",
-                    "delay_days": 0
-                },
-                "prorate_yearly_subscription": {
-                    "period": "none",
-                    "enabled": false
-                }
-            },
-            "group_name": "Default"
+    "id": "flw_UvLodqUdCF8Y1KuSZuiW9mCY",
+    "name": "$5 Flow",
+    "description": "Earn $5 for every referral.",
+    "event": "transaction_created",
+    "action_type": "generate_commission",
+    "action": {
+        "type": "fixed",
+        "value": 5
+    },
+    "conditions": [
+        {
+            "id": "98209e0a-8b2e-4898-bd97-e075cbff2429",
+            "type": "partner_country",
+            "value": [
+                "AF",
+                "AX",
+                "AL",
+                "DZ",
+                "AS",
+                "AD",
+                "AO",
+                ],
+            "operator": "is in",
+            "logicalOperator": "AND"
+        }
+    ],
+    "organization_id": "org_9MTRHhGnf3Emjf3My7d87ucM",
+    "program_id": "prg_udJZjmJJrnnJrW5auom7NBJv",
+    "group_id": "grp_fXhgGMXzJedeA9BmRLkgp9tq",
+    "created_at": "2025-06-23T03:21:15.814Z",
+    "updated_at": "2025-06-23T05:40:11.636Z",
+    "active": true,
+    "partner_overrides": [],
+    "options": {
+        "auto_approval": {
+            "type": "manual",
+            "delay_days": 0
         },
+        "prorate_yearly_subscription": {
+            "period": "none",
+            "enabled": false
+            }
+        },
+        "group_name": "Default"
+    },
+```
+
+## Current Problem
+
+There is a user that wants to give a $10 commission for every tranasction where the partner is in XYZ countries and the product ID is either X or Y.
+
+```text
+Partner Country is in ["AF", "AX", "AL", "DZ", "AS", "AD", "AO"]
+AND
+(
+  Product ID is X
+  OR
+  Product ID is Y
+)
 ```

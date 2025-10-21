@@ -40,13 +40,11 @@ export function evaluateConditions(
 ): boolean {
   if (!conditions || conditions.length === 0) return true;
 
-  const logicalOperator =
-    conditions.find((c) => c.logicalOperator)?.logicalOperator || "AND";
+  // Get the logical operator from the first condition (they should all be the same)
+  const logicalOperator = conditions[0]?.logicalOperator || "AND";
 
-  // Filter out the logical operator condition from the actual conditions
-  const actualConditions = conditions.filter((c) => !c.logicalOperator);
-
-  for (const condition of actualConditions) {
+  for (let i = 0; i < conditions.length; i++) {
+    const condition = conditions[i];
     let value = null;
 
     switch (condition.type) {
@@ -69,9 +67,15 @@ export function evaluateConditions(
       condition.operator,
       condition.value
     );
+
+    // For AND logic: if any condition fails, return false
     if (logicalOperator === "AND" && !result) return false;
+
+    // For OR logic: if any condition passes, return true
     if (logicalOperator === "OR" && result) return true;
   }
 
+  // For AND: if we get here, all conditions passed
+  // For OR: if we get here, no conditions passed
   return logicalOperator === "AND" ? true : false;
 }

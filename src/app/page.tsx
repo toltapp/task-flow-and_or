@@ -14,7 +14,26 @@ import { Toaster } from "@/components/ui/sonner";
 
 export default function Page() {
   const [open, setOpen] = useState(false);
-  const [conditions, setConditions] = useState<any[]>([]);
+  const [conditions, setConditions] = useState<any[]>([
+    {
+      type: "partner_id",
+      operator: "equals",
+      value: "p_123",
+      logicalOperator: "AND",
+    },
+    {
+      type: "product_id",
+      operator: "equals",
+      value: "prod_tds",
+      logicalOperator: "AND",
+    },
+    {
+      type: "product_id",
+      operator: "equals",
+      value: "prod_1020",
+      logicalOperator: "AND",
+    },
+  ]);
   const [results, setResults] = useState<{
     test1: boolean | null;
     test2: boolean | null;
@@ -41,7 +60,7 @@ export default function Page() {
 
   const testData3 = {
     partner_id: "p_321",
-    product_id: "2",
+    product_id: "prod_1020",
     interval: "weekly",
     billing_type: "one-time",
   };

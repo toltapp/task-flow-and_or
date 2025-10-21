@@ -16,7 +16,10 @@ export default function FlowConditions({ value, onChange }: any) {
   const [logicalOperator, setLogicalOperator] = useState<"AND" | "OR">("AND");
 
   const addCondition = () => {
-    setConditions([...conditions, { type: "", operator: "", value: "" }]);
+    setConditions([
+      ...conditions,
+      { type: "", operator: "", value: "", logicalOperator },
+    ]);
   };
 
   const removeCondition = (index: number) => {
@@ -25,7 +28,8 @@ export default function FlowConditions({ value, onChange }: any) {
     setConditions(updated);
   };
 
-  const clearAll = () => setConditions([{ type: "", operator: "", value: "" }]);
+  const clearAll = () =>
+    setConditions([{ type: "", operator: "", value: "", logicalOperator }]);
 
   const handleChange = (index: number, field: string, value: string) => {
     const updated = [...conditions];
@@ -35,7 +39,12 @@ export default function FlowConditions({ value, onChange }: any) {
   };
 
   useEffect(() => {
-    onChange?.([...conditions, { logicalOperator }]);
+    // Update all conditions with the current logical operator
+    const updatedConditions = conditions.map((condition: any) => ({
+      ...condition,
+      logicalOperator,
+    }));
+    onChange?.(updatedConditions);
   }, [conditions, logicalOperator]);
 
   return (

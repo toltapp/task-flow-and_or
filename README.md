@@ -50,13 +50,6 @@ AND
 )
 ```
 
-## 📝 Instructions
-
-1. Fork this repository
-2. Implement the nested condition groups
-3. Run the project and test the functionality
-4. Submit a pull request
-
 ## 📝 Notes
 
 The flow object looks like this:
@@ -134,3 +127,7 @@ AND
      - B. What will happen to the existing flows, will they still work with your code?
      - C. Will we need to update all existing flows, or do you have a different approach for it?
    - Would you do it differently if you had to do it again - design wise, code wise, etc...?
+  
+
+## Desig
+- If the design is not great and you can do better, then feel free to do it :) 
